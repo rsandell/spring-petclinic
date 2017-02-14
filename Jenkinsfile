@@ -86,7 +86,7 @@ pipeline {
       }
       post {
         success {
-          mail subject: 'Bits released', body: 'Happy days!', from: 'spamclinic@example.com' to: 'rsandell@cloudbees.com'
+          mail subject: 'Bits released', body: 'Happy days!', from: 'spamclinic@example.com', to: 'rsandell@cloudbees.com'
         }
       }
     }
