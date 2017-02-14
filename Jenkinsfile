@@ -81,7 +81,7 @@ pipeline {
       }
       steps {
         dir('target') {
-          sh '../perform-release.sh -user $REL_USR -password $REL_PSW
+          sh '../perform-release.sh -user $REL_USR -password $REL_PSW'
         }
       }
       post {
