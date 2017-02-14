@@ -18,5 +18,22 @@ pipeline {
       }
     }
 
+    stage('Test') {
+      when {
+        branch '**/master'
+      }
+      steps {
+        sh 'mvn -B clean package -Pintegration'
+      }
+      post {
+        success {
+          junit '**/target/surefire-reports/TEST-*.xml'
+        }
+        unstable {
+          junit '**/target/surefire-reports/TEST-*.xml'
+        }
+      }
+    }
+
   }
 }
