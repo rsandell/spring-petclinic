@@ -37,7 +37,7 @@ pipeline {
         }
       }
     }
-    stage('Test') {
+    stage('Release') {
       when {
         branch '**/release-*'
       }
