@@ -81,7 +81,8 @@ pipeline {
       steps {
         //unstash 'bits'
         dir('target') {
-          sh "scp *.jar $REL_USR:$REL_PSW@bobby.local:~/Downloads/"
+          sh 'env | sort'
+          sh 'scp *.jar $REL_USR:$REL_PSW@bobby.local:~/Downloads/'
         }
       }
       post {
