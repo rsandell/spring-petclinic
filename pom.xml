@@ -5,12 +5,12 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.springframework.samples</groupId>
   <artifactId>spring-petclinic</artifactId>
-  <version>1.5.1</version>
+  <version>${version}</version>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>${version}</version>
+    <version>1.5.1.RELEASE</version>
   </parent>
   <name>petclinic</name>
 
@@ -30,7 +30,7 @@
     <thymeleaf.version>3.0.2.RELEASE</thymeleaf.version>
 
     <cobertura.version>2.7</cobertura.version>
-    <version>1.5.1.RELEASE</version>
+    <version>1.5.1-SNAPSHOT</version>
 
   </properties>
 
