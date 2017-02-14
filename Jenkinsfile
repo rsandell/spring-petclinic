@@ -14,7 +14,7 @@ pipeline {
       }
       post {
         success {
-          step([$class: 'FindBugsPublisher', canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: 'target/findbugsXml.xml', unHealthy: ''])
+          step([$class: 'FindBugsPublisher', pattern: 'target/findbugsXml.xml', unHealthy: ''])
         }
       }
     }
@@ -63,7 +63,6 @@ pipeline {
         }
         success {
           junit '**/target/surefire-reports/TEST-*.xml'
-          //stash includes: '**/target//.jar', name: 'bits'
         }
         unstable {
           junit '**/target/surefire-reports/TEST-*.xml'
@@ -73,16 +72,16 @@ pipeline {
 
     stage('Release Push') {
       when {
-        branch '**/release-*'
+        expression {
+          env.BRANCH_NAME.contains('release-') && currentBuild.result == null
+        }
       }
       environment {
         REL = credentials('ssh-bob')
       }
       steps {
-        //unstash 'bits'
         dir('target') {
-          sh 'env | sort'
-          sh 'scp *.jar $REL_USR:$REL_PSW@bobby.local:~/Downloads/'
+          sh '../perform-release.sh -user $REL_USR -password $REL_PSW
         }
       }
       post {
