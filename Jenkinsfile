@@ -1,3 +1,4 @@
+echo "hello"
 pipeline {
   
   agent { label 'docker' }
